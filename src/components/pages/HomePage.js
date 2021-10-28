@@ -1,11 +1,8 @@
 import  React from "react";
 import {Link} from "react-router-dom";
-
+import './HomePage.scss'
 const HomePage = () => (
-    <div>
-        <h1>Home Page</h1>
-        <Link to = "/login"> Login </Link>
-    </div>
+    <h3> you are not logged in</h3>
 )
 
 export default HomePage;
