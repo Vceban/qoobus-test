@@ -8,8 +8,9 @@ const useForm = (callback, validate) => {
         password:'',
         password2: '',
     })
-    const[errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({})
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -17,15 +18,22 @@ const useForm = (callback, validate) => {
             ...values,
             [name]: value
         })
-        console.log("==========")
     }
 
     const handleSubmit = e => {
-        console.log("-----------")
         e.preventDefault()
         setErrors(validate(values));
         setIsSubmitting(true);
+        console.log("----")
     }
+
+    const submitHandler = e => {
+        e.preventDefault()
+        setIsLoggedIn(true);
+        console.log(isLoggedIn)
+        console.log(`${JSON.stringify(values)}`)
+    }
+
     useEffect(()=>{
         if(Object.keys(errors).length === 0 && isSubmitting){
             callback()
@@ -33,6 +41,6 @@ const useForm = (callback, validate) => {
     },
         [errors]
     )
-    return{handleChange, values, handleSubmit, errors}
+    return{handleChange, values, handleSubmit, errors, submitHandler}
 }
 export default useForm;
