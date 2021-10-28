@@ -4,6 +4,8 @@ import useForm from "./useForm";
 import validate from "./validateInfo";
 import { Redirect } from 'react-router';
 
+// ===== NOT FINISHED
+
 const LoginPage = ({}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const{ handleChange, submitHandler, values, errors } = useForm(validate);
